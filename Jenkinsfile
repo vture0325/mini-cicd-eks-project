@@ -53,9 +53,12 @@ pipeline {
     stage('Docker Image Push') {
       steps {
         // 젠킨스에 등록한 계정으로 ECR 에 이미지 푸시
-        withDockerRegistry([url: "https://${awsecrRegistry}", credentialsId: "ecr:us-east-1:${awsecrRegistryCredentail}"]) {
-          sh "docker push ${awsecrRegistry}:${currentBuild.number}"
-          sh "docker push ${awsecrRegistry}:latest"
+        //withDockerRegistry([url: "https://${awsecrRegistry}", credentialsId: "ecr:us-east-1:${awsecrRegistryCredentail}"]) {
+          //sh "docker push ${awsecrRegistry}:${currentBuild.number}"
+          //sh "docker push ${awsecrRegistry}:latest"
+          docker.withRegistry("https://389579302079.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:${awsecrRegistryCredentail}") {
+            docker.image("${awsecrRegistry}:${currentBuild.number}").push()
+            docker.image("${awsecrRegistry}:latest").push()
           // 10초 쉰 후에 다음 작업 이어나가도록 함
           sleep 10
         } 
