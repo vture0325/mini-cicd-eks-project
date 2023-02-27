@@ -4,7 +4,9 @@ FROM node:current-slim
 
 # Set the working directory.
 # working directory 저으이
-WORKDIR /usr/src/app
+#WORKDIR /usr/src/app
+WORKDIR /app/project
+
 
 # Copy the file from your host to your current location.
 # 현재 위치에 파일 복사
