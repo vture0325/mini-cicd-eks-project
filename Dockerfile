@@ -1,17 +1,17 @@
 # Use the official image as a parent image.
 # docker 이미지 정의
-FROM node:current-slim
+FROM node:14.21.2-slim
 
 # Set the working directory.
 # working directory 저으이
-#WORKDIR /usr/src/app
-WORKDIR /app/project
+WORKDIR /usr/src/app
+#WORKDIR /app/project
 
 
 # Copy the file from your host to your current location.
 # 현재 위치에 파일 복사
-#COPY package.json .
-COPY **/package.json **/package-lock.json /app/project
+COPY package.json .
+#COPY **/package.json **/package-lock.json /app/project
 
 # Run the command inside your image filesystem.
 # 이미지 파일 시스템 안에서 명령어
