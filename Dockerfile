@@ -8,7 +8,8 @@ WORKDIR /usr/src/app
 
 # Copy the file from your host to your current location.
 # 현재 위치에 파일 복사
-COPY package.json .
+#COPY package.json .
+COPY **/package.json **/package-lock.json ./
 
 # Run the command inside your image filesystem.
 # 이미지 파일 시스템 안에서 명령어
