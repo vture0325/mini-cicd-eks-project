@@ -1,12 +1,11 @@
-FROM centos:centos8
-LABEL maintainer="admin@example.com"
+# Pull the minimal Ubuntu image
+FROM ubuntu
 
-# Install NGINX
-RUN dnf -y update
-RUN dnf -y install nginx
+# Install Nginx
+RUN apt-get -y update && apt-get -y install nginx
 
-# Add default configuration
+# Expose the port for access
+EXPOSE 80/tcp
 
-EXPOSE 80
-
-CMD ["nginx"]
+# Run the Nginx server
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
