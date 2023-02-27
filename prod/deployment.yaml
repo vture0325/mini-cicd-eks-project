@@ -13,6 +13,8 @@ spec:
       labels:
         app: demo-nginx-app
     spec:
+      nodeSelector:
+        nodegroup: ng-spot
       containers:
       - image: 389579302079.dkr.ecr.us-east-1.amazonaws.com/ecr-repo-ue1-bhj1-dev:latest
         name: demo-nginx-app
